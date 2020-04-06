@@ -126,4 +126,39 @@ final String prenom2, final LocalDate dateDeNaissance2) {
     public void print() {
         System.out.println(nom + " " + prenom);
     }
+/**
+ * Retourne nom.
+ * @return nom
+ */
+    public String getNom() {
+        return this.nom;
+    }
+    /**
+     * Retourne prenom.
+     * @return prenom
+     */
+    public String getPrenom() {
+        return this.prenom;
+    }
+    /**
+     * Retourne dateDeNaissance.
+     * @return dateDeNaissance
+     */
+    public LocalDate getDate() {
+        return this.dateDeNaissance;
+    }
+    /**
+     * Retourne numeroFixPro.
+     * @return numeroFixPro
+     */
+    public int getNumPro() {
+        return this.numeroFixPro;
+    }
+    /**
+     * Retourne numeroFixPer.
+     * @return numeroFixPer
+     */
+    public int getNumPerso() {
+        return this.numeroFixPer;
+    }
 }

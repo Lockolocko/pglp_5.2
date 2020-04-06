@@ -2,34 +2,53 @@
  * Package de Gillot-Roux.
  */
 package com.gillotroux;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *  * Interface DAO.
  * @author Lockolocko
  * @param <T>
  */
-public interface DAO<T> {
-    //protected Connection connect = /* ... */;
+public abstract class DAO<T> {
+    /**
+     * Permet la connection à Derby plus tard.
+     */
+    protected Connection connect;
+    /**
+     * Constructeur explicit.
+     */
+    public DAO() {
+        try {
+            connect = DriverManager.getConnection("jdbc:derby:PersonnelTable;create=true");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        
+    }
     /**
      * Permet la création d'un objet en SGBD.
      * @param obj
      * @return T
      */
-    T create(T obj);
+    public abstract T create(T obj);
     /**
      * Trouver.
      * @param id
      * @return T
      */
-    T find(String id);
+    public abstract T find(String id);
     /**
      * Update.
      * @param obj
      * @return T
      */
-    T update(T obj);
+    public abstract T update(T obj);
     /**
      * Supprimer.
      * @param obj
      */
-    void delete(T obj);
+    public abstract void delete(T obj);
 }
