@@ -3,7 +3,6 @@
  */
 package com.gillotroux;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -19,16 +18,15 @@ public abstract class DAO<T> {
     /**
      * Permet la connection à Derby plus tard.
      */
-    protected Connection connect;
+    private Connection connect;
     /**
      * Constructeur explicit.
      */
     public DAO() {
-        
         try {
-            //Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
-            connect = DriverManager.getConnection("jdbc:derby://localhost:1527/PersonnelTable;create=true");
-            if (existe(connect,"PersonnelTable")) {
+            connect = DriverManager.getConnection(
+"jdbc:derby://localhost:1527/PersonnelTable;create=true");
+            if (existe(connect, "PersonnelTable")) {
             // Création table.
             java.sql.Statement prepare = connect.createStatement();
 
@@ -46,8 +44,7 @@ public abstract class DAO<T> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
-        
+        }
     }
     /**
      * Permet la création d'un objet en SGBD.
@@ -74,15 +71,26 @@ public abstract class DAO<T> {
     public abstract void delete(T obj);
     /**
      * Verifie si une table existe.
+     * @param connection
+     * @param nomTable
+     * @return boolean
      */
-    public static boolean existe(Connection connection, String nomTable)
-throws SQLException {
+    public static boolean existe(final Connection connection,
+final String nomTable) throws SQLException {
     boolean existe;
     DatabaseMetaData dmd = connection.getMetaData();
-    ResultSet tables = dmd.getTables(connection.getCatalog(),null,nomTable,null);
+    ResultSet tables = dmd.getTables(connection.getCatalog(),
+null, nomTable, null);
     existe = tables.next();
     tables.close();
     //System.out.println(existe);
-    return existe;  
+    return existe;
 }
+    /**
+     * Donne la connection.
+     * @return connect
+     */
+    public Connection getConnection() {
+        return connect;
+    }
 }
