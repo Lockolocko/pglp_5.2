@@ -18,7 +18,10 @@ public class PersonnelDAOTest {
         Personnel personnel2=new Personnel.Builder("Gillot-Roux","Roger",date).build();
         
         System.out.println(personnelDAO.create(personnel1));
+        System.out.println(personnelDAO.find("Gillot-Roux"));
+        System.out.println(personnelDAO.update(personnel2));
 
+        
         personnelDAO.delete(personnel1);
         
     }

@@ -45,14 +45,14 @@ implements Serializable {
     public Personnel find(final String id) {
         Personnel p = null;
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("SELECT * FROM PersonnelTable"
+            PreparedStatement prepare = this.connect.prepareStatement("SELECT * FROM PersonnelTable "
                     + "WHERE nom = ?");
             prepare.setString(1, id);
             ResultSet result = prepare.executeQuery();
-            
-            if (result.first()) {
+            if (result.next()) {
                 p = new Personnel.Builder(result.getString("nom"), result.getString("prenom"),LocalDate.parse(result.getString("birth"))).build();
             }
+
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ implements Serializable {
     public Personnel update(final Personnel obj) {
         try {
             PreparedStatement prepare = this.connect.prepareStatement("UPDATE PersonnelTable "
-                    + "SET prenom = ?, birth = ?, numPerso = ? ,numPro = ?"
+                    + "SET prenom = ?, birth = ?, numPerso = ? ,numPro = ? "
                     + "WHERE nom = ?");
             prepare.setString(5,obj.getNom());
             prepare.setString(1, obj.getPrenom());
@@ -93,7 +93,7 @@ implements Serializable {
             prepare.setString(1,obj.getNom());
             int result =  prepare.executeUpdate();
             if (result == 1) {
-                System.out.println("\n Personnel supprimé");
+                System.out.println("Personnel supprimé");
             }
         }
         catch (SQLException e) {
