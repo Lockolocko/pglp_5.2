@@ -92,7 +92,9 @@ implements Serializable {
                     + "WHERE nom = ?");
             prepare.setString(1,obj.getNom());
             int result =  prepare.executeUpdate();
-            assert result == 1;
+            if (result == 1) {
+                System.out.println("\n Personnel supprimé");
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();

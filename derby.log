@@ -1,0 +1,14 @@
+----------------------------------------------------------------
+Mon Apr 06 14:37:30 CEST 2020:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.15.1.3 - (1853019) : instance a816c00e-0171-4f7e-eb5f-000005402a10 
+dans le répertoire de base de données C:\Users\Lockolocko\Desktop\UVSQ - S2\PGLP\TD4\pglp_5.2\test2 avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@4e0e2f2a
+Chargé de file:/C:/Derby-10.12/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=13.0.2+8
+user.dir=C:\Users\Lockolocko\Desktop\UVSQ - S2\PGLP\TD4\pglp_5.2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
